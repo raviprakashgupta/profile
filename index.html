@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravi Gupta | Data & AI/ML Profile</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Load Lucide Icons (Modern, clean SVG icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Custom Styles for modern dark theme */
+        :root {
+            --emerald-accent: #10B981;
+            --gray-bg: #0d0d0d;
+            --card-bg: #1A1A1A;
+            --text-color: #E5E5E5;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--gray-bg);
+            color: var(--text-color);
+        }
+        .section-header {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--emerald-accent);
+            text-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Timeline specific styling */
+        .timeline-item {
+            position: relative;
+            padding-left: 3.5rem;
+            padding-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 14px; /* Center the vertical line */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #374151;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: #1A1A1A; /* Match card bg */
+            border: 4px solid var(--emerald-accent);
+            border-radius: 50%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+        
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 60;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Utility classes for animations and visibility */
+        .fade-in { opacity: 0; transition: opacity 1s ease-in-out, transform 0.8s ease-out; transform: translateY(30px); }
+        .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+    <!-- Contact Modal Structure -->
+    <div id="contactModal" class="fixed inset-0 hidden items-center justify-center modal-backdrop transition-opacity" onclick="hideContactModal(event)">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-sm w-full transform transition-all duration-300 scale-95" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start border-b border-gray-700 pb-3 mb-4">
+                <h3 class="text-2xl font-bold text-emerald-400 flex items-center">
+                    <i data-lucide="mail-check" class="w-6 h-6 mr-2"></i> Get In Touch
+                </h3>
+                <button onclick="hideContactModal()" class="text-gray-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="flex items-center p-3 bg-gray-700 rounded-lg">
+                    <i data-lucide="phone" class="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0"></i>
+                    <div>
+                        <p class="text-xs text-gray-400">Work Phone</p>
+                        <p id="modalPhone" class="font-semibold text-white">+44 7767927325</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-3 bg-gray-700 rounded-lg">
+                    <i data-lucide="at-sign" class="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0"></i>
+                    <div>
+                        <p class="text-xs text-gray-400">Email Address</p>
+                        <p id="modalEmail" class="font-semibold text-white break-all">raviprakashgupta88@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="hideContactModal()" class="mt-6 w-full px-4 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-500 transition duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+    <!-- End Contact Modal -->
+
+
+    <!-- Navigation Header -->
+    <header id="nav" class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-xl border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-4">
+                <a href="#hero" class="text-2xl font-bold text-emerald-400 hover:text-emerald-300 transition duration-300 flex items-center">
+                    <i data-lucide="brain-circuit" class="w-6 h-6 mr-2 text-emerald-400"></i> Ravi Gupta
+                </a>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#experience" class="hover:text-emerald-400 transition duration-300">Experience</a>
+                    <a href="#matrix" class="hover:text-emerald-400 transition duration-300">Expertise Matrix</a>
+                    <a href="#projects" class="hover:text-emerald-400 transition duration-300">Projects</a>
+                    <a href="#skills" class="hover:text-emerald-400 transition duration-300">Expertise</a>
+                    <a href="#education" class="hover:text-emerald-400 transition duration-300">Education</a>
+                    <a href="#awards" class="hover:text-emerald-400 transition duration-300">Awards</a>
+                </div>
+                <button onclick="showContactModal()" class="px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-full hover:bg-emerald-500 transition duration-300 shadow-lg">
+                    <i data-lucide="mail" class="w-4 h-4 inline mr-1"></i> Contact
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- 1. HERO / SUMMARY SECTION -->
+        <section id="hero" class="min-h-[85vh] flex items-center pt-16 pb-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center w-full">
+                <!-- Left Column: Title and Summary -->
+                <div class="lg:col-span-2 fade-in">
+                    <p class="text-xl text-emerald-400 mb-2 font-medium tracking-wider uppercase">Advisor - Clinical Data Automation, UK</p>
+                    <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold leading-tight text-white mb-6">
+                        AI-Powered <span class="text-emerald-400">Clinical Data</span> Leader
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-light text-gray-300 mb-8">
+                        Technical leadership across Eli Lilly, Optum, Novartis, and GSK.
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed border-l-4 border-emerald-600 pl-4 py-2 bg-gray-800/50 rounded-lg shadow-inner">
+                        I am a specialist in the end-to-end development and deployment of **Generative AI and Machine Learning models** to transform complex clinical trial data pipelines. My focus is on leveraging advanced data visualization and statistical analysis to drive organizational digital maturity and accelerate R&D cycles.
+                    </p>
+                    <div class="mt-10 space-x-4">
+                        <a href="#projects" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-full shadow-lg text-gray-900 bg-emerald-400 hover:bg-emerald-300 transition duration-300">
+                            <i data-lucide="rocket" class="w-5 h-5 inline mr-1"></i> View Projects
+                        </a>
+                        <button onclick="showContactModal()" class="inline-flex items-center px-6 py-3 border border-emerald-400 text-base font-semibold rounded-full text-emerald-400 hover:bg-emerald-900 transition duration-300">
+                            <i data-lucide="send" class="w-5 h-5 inline mr-1"></i> Collaborate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: LinkedIn Badge & Image Placeholder -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-end fade-in">
+                    <!-- Profile Placeholder -->
+                    <div class="w-48 h-48 bg-gray-700 rounded-full flex items-center justify-center border-4 border-emerald-500 shadow-2xl mb-6">
+                        <i data-lucide="person-standing" class="w-24 h-24 text-emerald-400"></i>
+                    </div>
+                    <!-- LinkedIn Badge -->
+                    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="raviprakashgupta88" data-version="v1">
+                        <a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/raviprakashgupta88?trk=profile-badge">Ravi Gupta</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. EXPERIENCE SECTION (Timeline Style) -->
+        <section id="experience" class="py-20 border-t border-gray-800">
+            <h2 class="text-4xl font-bold section-header text-center fade-in">Professional Journey & Impact</h2>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                
+                <!-- 1. Eli Lilly (Current Role) -->
+                <div class="timeline-item group fade-in" data-start-date="2017-12-01" data-end-date="present">
+                    <div class="timeline-dot bg-white border-emerald-600/90 text-emerald-600">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    </div>
+                    <div class="p-6 bg-gray-800/70 rounded-xl shadow-2xl border-l-4 border-emerald-600 hover:border-emerald-400 transition duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Advisor - Clinical Data Automation (UK)</h3>
+                            <div class="flex flex-col items-end">
+                                <span class="text-sm font-medium text-emerald-400">Dec 2017 - Present</span>
+                                <span class="text-xs text-gray-500 font-medium duration-label" id="lilly-duration"></span>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-3 flex items-center">
+                            Eli Lilly and Company
+                            <span class="ml-2 px-2 py-0.5 text-xs font-bold rounded-full bg-emerald-600 text-white">CURRENT</span>
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Currently serving as Advisor in the UK (since May 2023), leading technical strategy for implementing Gen AI agents and ML models. Previously held the role of **Associate Director** in the India operations (Dec 2017 - May 2023), driving global innovation and digital maturity in R&D.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Optum / UnitedHealth Group -->
+                <div class="timeline-item group fade-in" data-start-date="2017-01-01" data-end-date="2017-12-31">
+                    <div class="timeline-dot bg-white border-blue-500/90 text-blue-500">
+                        <i data-lucide="git-branch" class="w-4 h-4"></i>
+                    </div>
+                    <div class="p-6 bg-gray-800/70 rounded-xl shadow-2xl border-l-4 border-blue-500 hover:border-blue-400 transition duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Senior IT Data Scientist (Lead)</h3>
+                            <div class="flex flex-col items-end">
+                                <span class="text-sm font-medium text-blue-400">Jan 2017 - Dec 2017</span>
+                                <span class="text-xs text-gray-500 font-medium duration-label" id="optum-duration"></span>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-3">Optum / UnitedHealth Group</p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Led data science initiatives focused on leveraging IT data for predictive modeling and performance optimization. Key contributor to data strategy, automation pipelines, and advanced analytics, earning multiple **BRAVO Awards** (Diamond & Performance).
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 3. Novartis (Using calculated duration 2y 5m) -->
+                <div class="timeline-item group fade-in" data-start-date="2014-08-01" data-end-date="2016-12-31">
+                    <div class="timeline-dot bg-white border-red-600/90 text-red-600">
+                        <i data-lucide="pill" class="w-4 h-4"></i>
+                    </div>
+                    <div class="p-6 bg-gray-800/70 rounded-xl shadow-2xl border-l-4 border-red-600 hover:border-red-400 transition duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Senior Statistical Analyst</h3>
+                            <div class="flex flex-col items-end">
+                                <span class="text-sm font-medium text-red-400">Aug 2014 - Dec 2016</span>
+                                <span class="text-xs text-gray-500 font-medium duration-label" id="novartis-duration"></span>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-3">Novartis Oncology</p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Acted as SME for **RECIST 1.1** programming, supporting Phase-III trial submissions. Developed robust **SAS macro tools** for discrepancy reporting, earning the PQS Award.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. GSK (Using PDF duration 2y 10m) -->
+                <div class="timeline-item group fade-in" data-start-date="2011-11-01" data-end-date="2014-08-01">
+                    <div class="timeline-dot bg-white border-orange-500/90 text-orange-500">
+                        <i data-lucide="microscope" class="w-4 h-4"></i>
+                    </div>
+                    <div class="p-6 bg-gray-800/70 rounded-xl shadow-2xl border-l-4 border-orange-500 hover:border-orange-400 transition duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Associate Programmer</h3>
+                            <div class="flex flex-col items-end">
+                                <span class="text-sm font-medium text-orange-400">Nov 2011 - Aug 2014</span>
+                                <span class="text-xs text-gray-500 font-medium duration-label" id="gsk-duration"></span>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-3">GlaxoSmithKline (GSK)</p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Generated analysis reports for demographics and safety assessment, ensuring strict compliance with FDA and regulatory standards. Key role in department SharePoint administration.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 5. Fortis (Using PDF duration 7 months) -->
+                <div class="timeline-item group fade-in" data-start-date="2009-07-01" data-end-date="2010-01-31">
+                    <div class="timeline-dot bg-white border-cyan-500/90 text-cyan-500">
+                        <i data-lucide="activity-square" class="w-4 h-4"></i>
+                    </div>
+                    <div class="p-6 bg-gray-800/70 rounded-xl shadow-2xl border-l-4 border-cyan-500 hover:border-cyan-400 transition duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Biomedical Engineer (Trainee)</h3>
+                            <div class="flex flex-col items-end">
+                                <span class="text-sm font-medium text-cyan-400">Jul 2009 - Jan 2010</span>
+                                <span class="text-xs text-gray-500 font-medium duration-label" id="fortis-duration"></span>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-3">Fortis Healthcare</p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Managed servicing and maintenance of critical medical devices (ICU, OT) and contributed to essential documentation for **JCI (Joint Commission International) approval**.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2.5 EXPERTISE MATRIX SECTION (Diagram) -->
+        <section id="matrix" class="py-20 border-t border-gray-800">
+            <h2 class="text-4xl font-bold section-header text-center fade-in">Clinical Expertise Matrix: Phases & Focus</h2>
+            <p class="text-lg text-gray-400 text-center mb-10 fade-in max-w-3xl mx-auto">
+                Demonstrating end-to-end contribution from early research (Phase I) to post-marketing surveillance (Phase IV), covering both traditional programming and forward-looking automation strategies.
+            </p>
+
+            <div class="max-w-5xl mx-auto p-4 bg-gray-800/70 rounded-xl shadow-2xl fade-in">
+                <!-- Matrix Header (Clinical Phases) -->
+                <div class="grid grid-cols-5 gap-4 mb-4">
+                    <div class="col-span-1"></div> <!-- Empty corner -->
+                    <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Phase I</div>
+                    <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Phase II</div>
+                    <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Phase III</div>
+                    <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Phase IV</div>
+                </div>
+
+                <!-- Row 1: Standard Programming & Data Analyst -->
+                <div class="grid grid-cols-5 gap-4 mb-4">
+                    <div class="col-span-1 flex items-center justify-center font-bold text-white border-r-2 border-gray-700 pr-4 text-center">
+                        <i data-lucide="database" class="w-6 h-6 mr-2 text-blue-400"></i> Standard Programming / Data Analysis
+                    </div>
+                    
+                    <!-- Cell: Standard - Phase I -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">PK/PD & Safety Analysis</span>
+                    </div>
+
+                    <!-- Cell: Standard - Phase II -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Efficacy Reporting</span>
+                    </div>
+                    
+                    <!-- Cell: Standard - Phase III -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Submissions & RECIST</span>
+                    </div>
+                    
+                    <!-- Cell: Standard - Phase IV -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Safety Surveillance</span>
+                    </div>
+                </div>
+
+                <!-- Row 2: AI / Automation / Innovation -->
+                <div class="grid grid-cols-5 gap-4">
+                    <div class="col-span-1 flex items-center justify-center font-bold text-white border-r-2 border-gray-700 pr-4 text-center">
+                        <i data-lucide="lightbulb" class="w-6 h-6 mr-2 text-yellow-400"></i> AI / Automation / Innovation
+                    </div>
+                    
+                    <!-- Cell: AI - Phase I -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Predictive Analytics</span>
+                    </div>
+
+                    <!-- Cell: AI - Phase II -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Trial Optimization</span>
+                    </div>
+                    
+                    <!-- Cell: AI - Phase III -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Gen AI Reporting Agents</span>
+                    </div>
+                    
+                    <!-- Cell: AI - Phase IV -->
+                    <div class="matrix-cell highlighted-cell group hover:bg-emerald-700/50">
+                        <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
+                        <span class="text-sm text-gray-300 mt-1">Signal Detection Automation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DIGITAL INNOVATION PORTFOLIO SECTION -->
+        <section id="projects" class="py-20 border-t border-gray-800">
+            <h2 class="text-4xl font-bold section-header text-center fade-in">Digital Innovation Portfolio</h2>
+            <p class="text-lg text-gray-400 text-center mb-10 fade-in max-w-4xl mx-auto">
+                A selection of high-impact projects focusing on leveraging AI, predictive modeling, and automation to revolutionize clinical data management and statistical programming processes.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: DIVA (Dynamic Visualisation & Analysis) -->
+                <div class="project-card fade-in p-6 bg-gray-800/70 rounded-xl shadow-xl border-cyan-500">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-cyan-900/30 text-cyan-500 mr-4">
+                            <i data-lucide="gauge" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">DIVA (Dynamic Visualisation & Analysis)</h3>
+                    </div>
+                    <p class="text-gray-400 mb-3">Enable real-time visualisation of statistical outputs and data trends, allowing data managers and statisticians to view data issues in real-time.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-700">
+                        <p class="text-sm font-semibold text-cyan-400 mb-1">AI Focus:</p>
+                        <p class="text-gray-300 text-sm">Natural Language Queries, dynamic dashboards for issue detection.</p>
+                        <p class="text-sm font-semibold text-cyan-400 mt-2 mb-1">Impact:</p>
+                        <p class="text-gray-300 text-sm">Implemented on **100+ trials** and used by **600+ users**. Faster decision-making, early issue detection.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: SMILe (Study Management and Insights Learning) -->
+                <div class="project-card fade-in p-6 bg-gray-800/70 rounded-xl shadow-xl border-emerald-500">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-emerald-900/30 text-emerald-500 mr-4">
+                            <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">SMILe (Study Management and Insights Learning)</h3>
+                    </div>
+                    <p class="text-gray-400 mb-3">Deliver insights from clinical trial data using advanced visualisation and **anomaly detection** for statisticians and monitoring teams.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-700">
+                        <p class="text-sm font-semibold text-emerald-400 mb-1">AI Focus:</p>
+                        <p class="text-gray-300 text-sm">Anomaly detection workflows, predictive modelling.</p>
+                        <p class="text-sm font-semibold text-emerald-400 mt-2 mb-1">Impact:</p>
+                        <p class="text-gray-300 text-sm">Used over **100+ active trials** across portfolio. Enabled early detection of data anomalies, improved data quality.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3: PAT (Programming Assistant Tool) -->
+                <div class="project-card fade-in p-6 bg-gray-800/70 rounded-xl shadow-xl border-purple-500">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-purple-900/30 text-purple-500 mr-4">
+                            <i data-lucide="wand-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">PAT (Programming Assistant Tool)</h3>
+                    </div>
+                    <p class="text-gray-400 mb-3">Automate dataset programming using **Gen AI (GPT-4, Claude)** generated code prompts and an automation engine.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-700">
+                        <p class="text-sm font-semibold text-purple-400 mb-1">AI Focus:</p>
+                        <p class="text-gray-300 text-sm">Gen AI (OpenAI GPT-4, Claude), Code generation, prompt engineering (Python, R).</p>
+                        <p class="text-sm font-semibold text-purple-400 mt-2 mb-1">Impact:</p>
+                        <p class="text-gray-300 text-sm">Top Priority Game Changer. Saved **~70% manual effort**, improved specification quality. Beta delivered.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. SKILLS & EDUCATION SECTION (Grid) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 py-20 border-t border-gray-800">
+
+            <!-- SKILLS -->
+            <section id="skills" class="lg:col-span-2 fade-in">
+                <h2 class="text-4xl font-bold section-header">Technical Depth & Expertise</h2>
+                
+                <!-- Skill Category 1: AI/ML & Data Science -->
+                <div class="mb-8 p-6 bg-gray-800 rounded-xl">
+                    <h3 class="text-2xl font-semibold text-emerald-400 mb-3 flex items-center"><i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i> AI/ML & Data Science</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Generative AI (LLMs)</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Machine Learning</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Predictive Modeling</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Statistical Analysis</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Python (Pandas, Scikit-learn)</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Data Visualization</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2: Domain & Clinical -->
+                <div class="mb-8 p-6 bg-gray-800 rounded-xl">
+                    <h3 class="text-2xl font-semibold text-emerald-400 mb-3 flex items-center"><i data-lucide="heart-pulse" class="w-5 h-5 mr-2"></i> Clinical & Pharma Domain</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Clinical Trials (Phase I-IV)</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">CDISC / SDTM / ADaM</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Regulatory Submissions (FDA)</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">RECIST 1.1</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Bioinformatics</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3: Core Programming & Infrastructure -->
+                <div class="p-6 bg-gray-800 rounded-xl">
+                    <h3 class="text-2xl font-semibold text-emerald-400 mb-3 flex items-center"><i data-lucide="code-square" class="w-5 h-5 mr-2"></i> Core Programming & Infra</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">SAS (Base, Macro)</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">SQL & Database Management</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Data Automation & ETL</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Microsoft Power BI</span>
+                        <span class="px-3 py-1 bg-emerald-700/30 text-emerald-300 rounded-full text-sm font-medium">Linux Command Line</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDUCATION -->
+            <section id="education" class="lg:col-span-1 fade-in">
+                <h2 class="text-4xl font-bold section-header">Education</h2>
+                <ul class="space-y-4">
+                    <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
+                        <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 text-emerald-400"></i>
+                        <div>
+                            <!-- EMBA Update -->
+                            <p class="font-semibold text-white">EMBA, Business Administration</p>
+                            <p class="text-gray-400 text-sm">IIM Bangalore</p>
+                        </div>
+                    </li>
+                    <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6 mr-3 text-emerald-400"></i>
+                        <div>
+                            <p class="font-semibold text-white">Certificate, Business Analytics & BI</p>
+                            <p class="text-gray-400 text-sm">IIM Ranchi</p>
+                        </div>
+                    </li>
+                    <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
+                        <i data-lucide="dna" class="w-6 h-6 mr-3 text-emerald-400"></i>
+                        <div>
+                            <p class="font-semibold text-white">PGD, Bioinformatics</p>
+                            <p class="text-gray-400 text-sm">IBAB</p>
+                        </div>
+                    </li>
+                    <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
+                        <i data-lucide="trello" class="w-6 h-6 mr-3 text-emerald-400"></i>
+                        <div>
+                            <p class="font-semibold text-white">B.Tech, Biomedical Engineering</p>
+                            <p class="text-gray-400 text-sm">Bundelkhand University</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        
+        <!-- 5. AWARDS & PUBLICATIONS SECTION -->
+        <section id="awards" class="py-20 border-t border-gray-800">
+            <h2 class="text-4xl font-bold section-header text-center fade-in">Recognition & Publications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Awards List -->
+                <div class="space-y-6 fade-in">
+                    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2 flex items-center">
+                        <i data-lucide="award" class="w-6 h-6 mr-2 text-yellow-400"></i> Honors & Awards
+                    </h3>
+                    <div class="p-4 bg-gray-800/70 rounded-xl shadow-lg border-l-4 border-yellow-400">
+                        <p class="font-semibold text-xl text-yellow-400">Lilly Innovator Awards (Multiple)</p>
+                        <p class="text-gray-400">Recognized multiple years (2025, 2023, 2022, 2021) as a Top 100 Innovator for strategic capabilities development and clinical data automation.</p>
+                    </div>
+                    <div class="p-4 bg-gray-800/70 rounded-xl shadow-lg border-l-4 border-yellow-400">
+                        <p class="font-semibold text-xl text-white">UnitedHealth - BRAVO (Diamond & Performance)</p>
+                        <p class="text-gray-400">Received top-tier recognition for superior performance and exceptional contribution during the tenure at Optum/UnitedHealth Group.</p>
+                    </div>
+                    <div class="p-4 bg-gray-800/70 rounded-xl shadow-lg border-l-4 border-yellow-400">
+                        <p class="font-semibold text-xl text-white">GSK Silver Award & Novartis PQS Award</p>
+                        <p class="text-gray-400">Acknowledged for excellence in R&D output (GSK) and commitment to Passion, Quality & Speed (Novartis).</p>
+                    </div>
+                </div>
+
+                <!-- Publications -->
+                <div class="space-y-6 fade-in">
+                    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2 flex items-center">
+                        <i data-lucide="file-text" class="w-6 h-6 mr-2 text-cyan-400"></i> Key Publication
+                    </h3>
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-xl h-full border-l-4 border-cyan-400">
+                        <p class="text-lg font-medium text-white italic mb-2">The Draft Genome and Transcriptome of *Amaranthus hypochondriacus*: A C4 Dicot</p>
+                        <p class="text-gray-400 text-sm">A peer-reviewed publication demonstrating expertise in **genomics and bioinformatics**, showcasing cross-disciplinary data analysis capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; <span id="currentYear"></span> Ravi Gupta Profile. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- LinkedIn Badge Script (MUST be included to render the badge) -->
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
+    <!-- JavaScript for Interactivity and Calculations -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Replace Lucide data-attributes with SVG icons
+        lucide.createIcons();
+
+        // ------------------------------------------------------------------
+        // CONTACT MODAL LOGIC
+        // ------------------------------------------------------------------
+        const contactModal = document.getElementById('contactModal');
+        
+        function showContactModal() {
+            contactModal.classList.remove('hidden');
+            contactModal.classList.add('flex');
+            // Slight delay for visibility to apply before transition
+            setTimeout(() => {
+                contactModal.style.opacity = 1;
+                contactModal.querySelector('.scale-95').classList.remove('scale-95');
+                contactModal.querySelector('.scale-95').classList.add('scale-100');
+            }, 10);
+        }
+
+        function hideContactModal(event) {
+            // Only hide if the click is on the backdrop
+            if (!event || event.currentTarget === contactModal) {
+                contactModal.style.opacity = 0;
+                contactModal.querySelector('.scale-100').classList.remove('scale-100');
+                contactModal.querySelector('.scale-95').classList.add('scale-95');
+
+                setTimeout(() => {
+                    contactModal.classList.remove('flex');
+                    contactModal.classList.add('hidden');
+                }, 300); // Wait for transition to finish
+            }
+        }
+        
+        // ------------------------------------------------------------------
+        // EXPERIENCE DURATION CALCULATION
+        // ------------------------------------------------------------------
+
+        /**
+         * Calculates the duration between two dates and formats it as "X years Y months".
+         * @param {string} start - Start date string (YYYY-MM-DD).
+         * @param {string} end - End date string (YYYY-MM-DD or 'present').
+         * @returns {string} Formatted duration string.
+         */
+        function calculateDuration(start, end) {
+            const startDate = new Date(start);
+            const endDate = end === 'present' ? new Date() : new Date(end);
+
+            if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                console.error("Invalid date provided:", start, end);
+                return "Duration Unknown";
+            }
+
+            let years = endDate.getFullYear() - startDate.getFullYear();
+            let months = endDate.getMonth() - startDate.getMonth();
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            // Adjust months based on day to be more accurate (e.g., Dec 1 to Oct 23 is not a full 10 months)
+            // This simple calculation gives X years and remainder months which is standard for resumes.
+
+            let duration = [];
+            if (years > 0) {
+                duration.push(years === 1 ? "1 year" : years + " years");
+            }
+            if (months > 0) {
+                duration.push(months === 1 ? "1 month" : months + " months");
+            }
+            
+            if (duration.length === 0) {
+                // If duration is 0, it means it was less than a month (e.g., Optum 1 year is 12 months)
+                const totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth()) + 1; // +1 to count both months
+                if (totalMonths === 12 && years === 0) return "1 year"; // Handle cases like Jan to Dec
+                if (totalMonths > 0) return totalMonths + (totalMonths === 1 ? " month" : " months");
+                return "Less than a month";
+            }
+
+            return duration.join(", ");
+        }
+
+        function updateAllDurations() {
+            const experienceItems = document.querySelectorAll('.timeline-item');
+            experienceItems.forEach(item => {
+                const startDate = item.getAttribute('data-start-date');
+                const endDate = item.getAttribute('data-end-date');
+                const durationLabel = item.querySelector('.duration-label');
+                
+                if (startDate && durationLabel) {
+                    // For Optum, it's exactly 1 year. The simple calculation might show 11 months, so we hardcode known durations for clarity.
+                    let durationText;
+
+                    if (item.id === 'optum-duration') {
+                         durationText = "1 year";
+                    } else if (item.id === 'gsk-duration') {
+                        durationText = "2 years, 10 months"; // Using precise duration from PDF
+                    } else if (item.id === 'fortis-duration') {
+                        durationText = "7 months"; // Using precise duration from PDF
+                    } else if (item.id === 'novartis-duration') {
+                        // Jan 2014 to Dec 2016 is 3 years, but using calculated for simplicity. Aug 2014 to Dec 2016 is 2 years, 5 months.
+                        durationText = calculateDuration(startDate, endDate);
+                    } else {
+                        durationText = calculateDuration(startDate, endDate);
+                    }
+
+                    durationLabel.textContent = `(${durationText})`;
+                }
+            });
+        }
+        
+        // ------------------------------------------------------------------
+        // INITIALIZATION AND MISC
+        // ------------------------------------------------------------------
+        
+        window.onload = function() {
+            updateAllDurations();
+        };
+
+        // Intersection Observer for Fade-in Animations
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px', threshold: 0.1 });
+
+        fadeInElements.forEach(element => { observer.observe(element); });
+        
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = document.getElementById('nav').offsetHeight;
+                    window.scrollTo({
+                        top: targetElement.offsetTop - offset - 10,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
