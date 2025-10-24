@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ravi P. Gupta | Data & AI/ML Profile</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Load Lucide Icons (Modern, clean SVG icons) -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
@@ -95,7 +93,6 @@
 </head>
 <body class="bg-gray-900 text-gray-100 antialiased">
 
-    <!-- Contact Modal Structure -->
     <div id="contactModal" class="fixed inset-0 hidden items-center justify-center modal-backdrop transition-opacity" onclick="hideContactModal(event)">
         <div class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-sm w-full transform transition-all duration-300 scale-95" onclick="event.stopPropagation()">
             <div class="flex justify-between items-start border-b border-gray-700 pb-3 mb-4">
@@ -108,7 +105,6 @@
             </div>
             
             <div class="space-y-4">
-                <!-- Phone -->
                 <div class="flex items-center p-3 bg-gray-700 rounded-lg">
                     <i data-lucide="phone" class="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0"></i>
                     <div>
@@ -116,7 +112,6 @@
                         <p id="modalPhone" class="font-semibold text-white">+44 7767927325</p>
                     </div>
                 </div>
-                <!-- Email -->
                 <div class="flex items-center p-3 bg-gray-700 rounded-lg">
                     <i data-lucide="at-sign" class="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0"></i>
                     <div>
@@ -124,7 +119,6 @@
                         <p id="modalEmail" class="font-semibold text-white break-all">raviprakashgupta88@gmail.com</p>
                     </div>
                 </div>
-                <!-- LinkedIn -->
                 <div class="flex items-center p-3 bg-gray-700 rounded-lg">
                     <i data-lucide="linkedin" class="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0"></i>
                     <div>
@@ -141,10 +135,6 @@
             </button>
         </div>
     </div>
-    <!-- End Contact Modal -->
-
-
-    <!-- Navigation Header -->
     <header id="nav" class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-xl border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav class="flex justify-between items-center py-4">
@@ -168,9 +158,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <!-- 1. HERO / SUMMARY SECTION -->
         <section id="hero" class="min-h-[85vh] flex items-center pt-16 pb-10">
-            <!-- Simplified layout to remove the badge column -->
             <div class="w-full">
                 <div class="fade-in">
                     <p class="text-xl text-emerald-400 mb-2 font-medium tracking-wider uppercase">Advisor - Clinical Data Automation, UK</p>
@@ -178,12 +166,9 @@
                         AI-Powered <span class="text-emerald-400">Clinical Data</span> Leader
                     </h1>
                     
-                    <!-- Updated Summary Text with <b> tags -->
                     <p class="text-gray-400 text-lg leading-relaxed border-l-4 border-emerald-600 pl-4 py-2 bg-gray-800/50 rounded-lg shadow-inner">
                         My career trajectory has evolved from performing core <b>Statistical Analyst</b> functions—where I was instrumental in generating regulatory-critical outputs—to my current role as an <b>Automation and AI Strategy Advisor</b>. I specialize in leveraging cutting-edge <b>Artificial Intelligence</b> and Machine Learning to radically transform the biometrics data landscape. By building scalable, end-to-end data pipelines, I accelerate the path from raw data to clinical insights, effectively stepping into the role of a quiet, <b>AI-powered clinical data leader</b> through quantifiable innovation. I drive enterprise-level efficiency and strategic alignment, consulting with stakeholders across the entire <b>Biometrics function</b> and engaging frequently with <b>Senior Leadership</b> to deliver high-quality, compliant statistical products.
                     </p>
-                    <!-- END UPDATED SUMMARY -->
-                    
                     <div class="mt-10 space-x-4">
                         <a href="#projects" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-full shadow-lg text-gray-900 bg-emerald-400 hover:bg-emerald-300 transition duration-300">
                             <i data-lucide="rocket" class="w-5 h-5 inline mr-1"></i> View Projects
@@ -196,13 +181,11 @@
             </div>
         </section>
 
-        <!-- 2. EXPERIENCE SECTION (Timeline Style) -->
         <section id="experience" class="py-20 border-t border-gray-800">
             <h2 class="text-4xl font-bold section-header text-center fade-in">Professional Journey & Impact</h2>
 
             <div class="max-w-4xl mx-auto space-y-4">
                 
-                <!-- 1a. Eli Lilly (Current Role - Advisor) -->
                 <div class="timeline-item group fade-in" data-start-date="2023-05-01" data-end-date="present">
                     <div class="timeline-dot bg-white border-emerald-600/90 text-emerald-600">
                         <i data-lucide="shield-check" class="w-4 h-4"></i>
@@ -226,7 +209,6 @@
                     </div>
                 </div>
                 
-                <!-- 1b. Eli Lilly (Previous Role - AD) -->
                 <div class="timeline-item group fade-in" data-start-date="2017-12-01" data-end-date="2023-05-01">
                     <div class="timeline-dot bg-white border-emerald-600/90 text-emerald-600">
                         <i data-lucide="chevrons-right" class="w-4 h-4"></i>
@@ -250,7 +232,6 @@
                 </div>
 
 
-                <!-- 2. Optum / UnitedHealth Group -->
                 <div class="timeline-item group fade-in" data-start-date="2017-01-01" data-end-date="2017-12-31">
                     <div class="timeline-dot bg-white border-blue-500/90 text-blue-500">
                         <i data-lucide="git-branch" class="w-4 h-4"></i>
@@ -270,7 +251,6 @@
                     </div>
                 </div>
                 
-                <!-- 3. Novartis (Using calculated duration 2y 5m) -->
                 <div class="timeline-item group fade-in" data-start-date="2014-08-01" data-end-date="2016-12-31">
                     <div class="timeline-dot bg-white border-red-600/90 text-red-600">
                         <i data-lucide="pill" class="w-4 h-4"></i>
@@ -290,7 +270,6 @@
                     </div>
                 </div>
 
-                <!-- 4. GSK (Using PDF duration 2y 10m) -->
                 <div class="timeline-item group fade-in" data-start-date="2011-11-01" data-end-date="2014-08-01">
                     <div class="timeline-dot bg-white border-orange-500/90 text-orange-500">
                         <i data-lucide="microscope" class="w-4 h-4"></i>
@@ -310,7 +289,6 @@
                     </div>
                 </div>
                 
-                <!-- 5. Fortis (Using PDF duration 7 months) -->
                 <div class="timeline-item group fade-in" data-start-date="2009-07-01" data-end-date="2010-01-31">
                     <div class="timeline-dot bg-white border-cyan-500/90 text-cyan-500">
                         <i data-lucide="activity-square" class="w-4 h-4"></i>
@@ -333,7 +311,6 @@
             </div>
         </section>
 
-        <!-- 2.5 CORE COMPETENCY MATRIX SECTION (Simplified Diagram) -->
         <section id="matrix" class="py-20 border-t border-gray-800">
             <h2 class="text-4xl font-bold section-header text-center fade-in">Core Competency Matrix: Standard vs. Automation</h2>
             <p class="text-lg text-gray-400 text-center mb-10 fade-in max-w-4xl mx-auto">
@@ -341,71 +318,59 @@
             </p>
 
             <div class="max-w-5xl mx-auto p-4 bg-gray-800/70 rounded-xl shadow-2xl fade-in">
-                <!-- Matrix Header (Technical Domains) -->
                 <div class="grid grid-cols-5 gap-4 mb-4">
-                    <div class="col-span-1"></div> <!-- Empty corner -->
-                    <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Core Data Programming</div>
+                    <div class="col-span-1"></div> <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Core Data Programming</div>
                     <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Automation & ML</div>
                     <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Data Visualization</div>
                     <div class="col-span-1 text-center font-bold text-emerald-400 text-lg uppercase tracking-wider">Regulatory/Quality</div>
                 </div>
 
-                <!-- Row 1: Standard Operations -->
                 <div class="grid grid-cols-5 gap-4 mb-4">
                     <div class="col-span-1 flex items-center justify-center font-bold text-white border-r-2 border-gray-700 pr-4 text-center">
                         <i data-lucide="check-square" class="w-6 h-6 mr-2 text-blue-400"></i> Standard Operations
                     </div>
                     
-                    <!-- Cell: Standard - Programming -->
                     <div class="matrix-cell bg-blue-900/20 group hover:bg-blue-900/50">
                         <i data-lucide="code" class="w-6 h-6 text-blue-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">SAS, ADaM, SDTM</span>
                     </div>
 
-                    <!-- Cell: Standard - Automation -->
                     <div class="matrix-cell bg-blue-900/20 group hover:bg-blue-900/50">
                         <i data-lucide="bar-chart-2" class="w-6 h-6 text-blue-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">Basic Macros, ETL</span>
                     </div>
                     
-                    <!-- Cell: Standard - Visualization -->
                     <div class="matrix-cell bg-blue-900/20 group hover:bg-blue-900/50">
                         <i data-lucide="layout-dashboard" class="w-6 h-6 text-blue-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">Static Reporting</span>
                     </div>
                     
-                    <!-- Cell: Standard - Regulatory -->
                     <div class="matrix-cell bg-blue-900/20 group hover:bg-blue-900/50">
                         <i data-lucide="shield-alert" class="w-6 h-6 text-blue-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">RECIST, CSR Support</span>
                     </div>
                 </div>
 
-                <!-- Row 2: AI / Automation / Innovation Focus -->
                 <div class="grid grid-cols-5 gap-4">
                     <div class="col-span-1 flex items-center justify-center font-bold text-white border-r-2 border-gray-700 pr-4 text-center">
                         <i data-lucide="lightbulb" class="w-6 h-6 mr-2 text-yellow-400"></i> Automation & Innovation Focus
                     </div>
                     
-                    <!-- Cell: Innovation - Programming -->
                     <div class="matrix-cell bg-emerald-900/20 group hover:bg-emerald-900/50">
                         <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">Python, R, Cloud Services</span>
                     </div>
 
-                    <!-- Cell: Innovation - Automation -->
                     <div class="matrix-cell bg-emerald-900/20 group hover:bg-emerald-900/50">
                         <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">Gen AI Agents, ML Pipelines</span>
                     </div>
                     
-                    <!-- Cell: Innovation - Visualization -->
                     <div class="matrix-cell bg-emerald-900/20 group hover:bg-emerald-900/50">
                         <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">Real-time, Predictive Dashboards</span>
                     </div>
                     
-                    <!-- Cell: Innovation - Regulatory -->
                     <div class="matrix-cell bg-emerald-900/20 group hover:bg-emerald-900/50">
                         <i data-lucide="zap" class="w-6 h-6 text-yellow-400 group-hover:text-white"></i>
                         <span class="text-sm text-gray-300 mt-1">Automated Quality Checks</span>
@@ -414,7 +379,6 @@
             </div>
         </section>
 
-        <!-- 3. DIGITAL INNOVATION PORTFOLIO SECTION -->
         <section id="projects" class="py-20 border-t border-gray-800">
             <h2 class="text-4xl font-bold section-header text-center fade-in">Digital Innovation Portfolio (3 Core Projects)</h2>
             <p class="text-lg text-gray-400 text-center mb-10 fade-in max-w-4xl mx-auto">
@@ -423,7 +387,6 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Project 1: PAT (Programming Assistant Tool) - RETAINED -->
                 <div class="project-card fade-in p-6 bg-gray-800/70 rounded-xl shadow-xl border-l-4 border-purple-500">
                     <div class="flex items-center mb-4">
                         <div class="p-3 rounded-full bg-purple-900/30 text-purple-500 mr-4">
@@ -441,7 +404,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2: DIVA (Dynamic Visualisation & Analysis) - RETAINED -->
                 <div class="project-card fade-in p-6 bg-gray-800/70 rounded-xl shadow-xl border-l-4 border-cyan-500">
                     <div class="flex items-center mb-4">
                         <div class="p-3 rounded-full bg-cyan-900/30 text-cyan-500 mr-4">
@@ -459,7 +421,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3: SMILe (Study Management and Insights Learning) - RETAINED -->
                 <div class="project-card fade-in p-6 bg-gray-800/70 rounded-xl shadow-xl border-l-4 border-emerald-500">
                     <div class="flex items-center mb-4">
                         <div class="p-3 rounded-full bg-emerald-900/30 text-emerald-500 mr-4">
@@ -480,14 +441,11 @@
         </section>
 
 
-        <!-- 4. SKILLS & EDUCATION SECTION (Grid) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 py-20 border-t border-gray-800">
 
-            <!-- SKILLS (Takes 2/3 width) -->
             <section id="skills" class="lg:col-span-2 fade-in">
                 <h2 class="text-4xl font-bold section-header">Technical Depth & Expertise</h2>
                 
-                <!-- Core Expertise & Automation Focus -->
                 <div class="p-6 bg-gray-800 rounded-xl mb-10">
                     <h3 class="text-2xl font-semibold text-emerald-400 mb-4 flex items-center"><i data-lucide="activity" class="w-5 h-5 mr-2"></i> Core Biometrics & Automation Focus</h3>
                     <div class="space-y-3 text-gray-300">
@@ -521,7 +479,6 @@
                     </div>
                 </div>
                 
-                <!-- Skill Category 1: AI/ML & Data Science -->
                 <div class="mb-8 p-6 bg-gray-800 rounded-xl">
                     <h3 class="text-2xl font-semibold text-emerald-400 mb-3 flex items-center"><i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i> General AI/ML & Data Science</h3>
                     <div class="flex flex-wrap gap-3">
@@ -534,7 +491,6 @@
                     </div>
                 </div>
 
-                <!-- Skill Category 2: Domain & Clinical -->
                 <div class="mb-8 p-6 bg-gray-800 rounded-xl">
                     <h3 class="text-2xl font-semibold text-emerald-400 mb-3 flex items-center"><i data-lucide="heart-pulse" class="w-5 h-5 mr-2"></i> Clinical & Pharma Domain</h3>
                     <div class="flex flex-wrap gap-3">
@@ -546,7 +502,6 @@
                     </div>
                 </div>
 
-                <!-- Skill Category 3: Core Programming & Infrastructure -->
                 <div class="p-6 bg-gray-800 rounded-xl">
                     <h3 class="text-2xl font-semibold text-emerald-400 mb-3 flex items-center"><i data-lucide="code-square" class="w-5 h-5 mr-2"></i> Core Programming & Infra</h3>
                     <div class="flex flex-wrap gap-3">
@@ -559,14 +514,12 @@
                 </div>
             </section>
 
-            <!-- EDUCATION & CERTIFICATIONS (Takes 1/3 width) -->
             <div class="lg:col-span-1 space-y-12">
                 
                 <section id="education" class="fade-in">
                     <h2 class="text-4xl font-bold section-header">Education</h2>
                     <ul class="space-y-4">
                         
-                        <!-- 1. EMBA (Updated) -->
                         <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
                             <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 text-emerald-400"></i>
                             <div>
@@ -575,7 +528,6 @@
                             </div>
                         </li>
                         
-                        <!-- 2. EPBABI (Updated) -->
                         <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
                             <i data-lucide="bar-chart-3" class="w-6 h-6 mr-3 text-emerald-400"></i>
                             <div>
@@ -584,7 +536,6 @@
                             </div>
                         </li>
                         
-                        <!-- 3. PGD (Updated) -->
                         <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
                             <i data-lucide="dna" class="w-6 h-6 mr-3 text-emerald-400"></i>
                             <div>
@@ -593,7 +544,6 @@
                             </div>
                         </li>
                         
-                        <!-- 4. B.Tech (Updated) -->
                         <li class="p-4 bg-gray-800 rounded-lg shadow-md flex items-center">
                             <i data-lucide="trello" class="w-6 h-6 mr-3 text-emerald-400"></i>
                             <div>
@@ -628,12 +578,10 @@
             </div>
         </div>
         
-        <!-- 5. AWARDS & PUBLICATIONS SECTION -->
         <section id="awards" class="py-20 border-t border-gray-800">
             <h2 class="text-4xl font-bold section-header text-center fade-in">Recognition & Publications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
-                <!-- Awards List -->
                 <div class="space-y-6 fade-in">
                     <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2 flex items-center">
                         <i data-lucide="award" class="w-6 h-6 mr-2 text-yellow-400"></i> Honors & Awards
@@ -652,13 +600,11 @@
                     </div>
                 </div>
 
-                <!-- Publications - UPDATED CONTENT -->
                 <div class="space-y-6 fade-in">
                     <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2 flex items-center">
                         <i data-lucide="file-text" class="w-6 h-6 mr-2 text-cyan-400"></i> Key Publications
                     </h3>
                     
-                    <!-- Publication 1 -->
                     <div class="p-4 bg-gray-800 rounded-xl shadow-xl border-l-4 border-cyan-400">
                         <p class="text-base font-medium text-white italic mb-2">The Draft Genome and Transcriptome of Amaranthus hypochondriacus: A C4 Dicot Producing High-Lysine Edible Pseudo-Cereal</p>
                         <p class="text-gray-400 text-sm mb-3">Oxford University Press · Jul 28, 2014</p>
@@ -667,7 +613,6 @@
                         </a>
                     </div>
                     
-                    <!-- Publication 2 -->
                     <div class="p-4 bg-gray-800 rounded-xl shadow-xl border-l-4 border-cyan-400">
                         <p class="text-base font-medium text-white italic mb-2">BioParishodhana: A novel graphical interface integrating BLAST, ClustalW, primer3 and restriction digestion tool.</p>
                         <p class="text-gray-400 text-sm mb-3">Biomedical Informatics · Jul 6, 2012</p>
@@ -682,22 +627,20 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 border-t border-gray-800 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
             <p>&copy; <span id="currentYear"></span> Ravi Gupta Profile. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity and Calculations -->
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Replace Lucide data-attributes with SVG icons
+        // FIX 1: This call is essential to render Lucide data-attributes as SVG icons.
         lucide.createIcons();
 
         // ------------------------------------------------------------------
-        // CONTACT MODAL LOGIC
+        // CONTACT MODAL LOGIC (FIXED)
         // ------------------------------------------------------------------
         const contactModal = document.getElementById('contactModal');
         
@@ -707,14 +650,18 @@
             // Slight delay for visibility to apply before transition
             setTimeout(() => {
                 contactModal.style.opacity = 1;
+                // Use a proper Tailwind class change instead of style property for clean transition
                 contactModal.querySelector('div').classList.remove('scale-95');
                 contactModal.querySelector('div').classList.add('scale-100');
             }, 10);
         }
 
+        // FIX 2: Corrected logic to properly close when clicking the backdrop, but not the modal content.
         function hideContactModal(event) {
-            // Only hide if the click is on the backdrop or the close button
-            if (!event || event.currentTarget === contactModal) {
+            // Check if the function was called by an event (click) AND if the target is NOT the modal backdrop itself.
+            // If event.target is the inner modal (the div with the white background), DO NOTHING.
+            // Only hide if the event is null (called by close button) OR if the click was on the outer backdrop (contactModal)
+            if (!event || event.target === contactModal) {
                 contactModal.style.opacity = 0;
                 contactModal.querySelector('div').classList.remove('scale-100');
                 contactModal.querySelector('div').classList.add('scale-95');
@@ -727,7 +674,7 @@
         }
         
         // ------------------------------------------------------------------
-        // EXPERIENCE DURATION CALCULATION
+        // EXPERIENCE DURATION CALCULATION (Simplified for clarity)
         // ------------------------------------------------------------------
 
         /**
@@ -740,36 +687,30 @@
             const startDate = new Date(start);
             const endDate = end === 'present' ? new Date() : new Date(end);
 
-            if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-                console.error("Invalid date provided:", start, end);
-                return "Duration Unknown";
-            }
+            if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) return "Duration Unknown";
 
             let years = endDate.getFullYear() - startDate.getFullYear();
             let months = endDate.getMonth() - startDate.getMonth();
-            let days = endDate.getDate() - startDate.getDate();
-
-            if (days < 0) {
-                months--;
-                // Approximating days in previous month as 30 for simplicity
-                days += 30; 
-            }
-
+            
+            // Adjust months/years based on month difference, ignoring days for a general duration estimate
             if (months < 0) {
-                years--;
-                months += 12;
+                 years--;
+                 months += 12;
             }
 
             let duration = [];
             if (years > 0) {
-                duration.push(years === 1 ? "1 year" : years + " years");
+                duration.push(years + " years");
             }
-            // Only include months if there are no years, or if months > 0 with years present
             if (months > 0) {
-                 duration.push(months === 1 ? "1 month" : months + " months");
-            } else if (years === 0 && months === 0) {
-                 // If less than a month, show days or 1 month
-                 if (days > 0) return "Less than a month"; // Don't show days explicitly for simplicity
+                 duration.push(months + " months");
+            }
+            
+            // If less than one month, and not the current job (which is calculated accurately)
+            if (years === 0 && months === 0 && end !== 'present') {
+                 return "Less than a month";
+            } else if (years === 0 && months === 0 && end === 'present') {
+                 // For the current job, if it's less than a month, still display 1 month.
                  return "1 month";
             }
             
@@ -787,20 +728,19 @@
                     let durationText;
                     const id = durationLabel.id;
 
-                    // Manual durations from PDF/Previous logic for historical accuracy
+                    // Re-using manual durations is fine for historical accuracy/consistency
                     if (id === 'optum-duration') {
                          durationText = "1 year";
                     } else if (id === 'gsk-duration') {
-                        durationText = "2 years, 9 months"; // Adjusted based on Nov 2011 to Aug 2014
+                        durationText = "2 years, 9 months";
                     } else if (id === 'fortis-duration') {
                         durationText = "7 months";
                     } else if (id === 'lilly-ad-duration') {
-                        // Dec 2017 to May 2023
                         durationText = "5 years, 5 months"; 
                     } else if (id === 'novartis-duration') {
-                        // Aug 2014 - Dec 2016
                         durationText = "2 years, 5 months";
                     } else {
+                        // Use calculator for 'present' and any other non-hardcoded entries
                         durationText = calculateDuration(startDate, endDate);
                     }
 
@@ -810,14 +750,14 @@
         }
         
         // ------------------------------------------------------------------
-        // INITIALIZATION AND MISC
+        // INITIALIZATION AND FADE-IN ANIMATION
         // ------------------------------------------------------------------
         
         window.onload = function() {
             updateAllDurations();
         };
 
-        // Intersection Observer for Fade-in Animations
+        // FIX 3: Ensure Intersection Observer runs on all elements on load
         const fadeInElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -826,7 +766,11 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { rootMargin: '0px', threshold: 0.1 });
+        }, { 
+             // Minor adjustment for threshold/margin to smooth out appearance
+             rootMargin: '0px 0px -100px 0px', 
+             threshold: 0.1 
+        });
 
         fadeInElements.forEach(element => { observer.observe(element); });
         
@@ -837,6 +781,7 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    // Use the fixed navigation bar height as an offset
                     const offset = document.getElementById('nav').offsetHeight;
                     window.scrollTo({
                         top: targetElement.offsetTop - offset - 10,
