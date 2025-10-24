@@ -29,6 +29,13 @@
             color: var(--emerald-accent);
             text-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
         }
+
+        /* FIX: Compatibility Fix for -webkit-text-size-adjust (Issue 2) */
+        :host,
+        html {
+            -webkit-text-size-adjust: 100%; /* Existing property, kept for older browser compatibility */
+            text-size-adjust: 100%;          /* New, standard property to resolve the compatibility issue */
+        }
         
         /* Timeline specific styling */
         .timeline-item {
@@ -99,7 +106,10 @@
                 <h3 class="text-2xl font-bold text-emerald-400 flex items-center">
                     <i data-lucide="mail-check" class="w-6 h-6 mr-2"></i> Get In Touch
                 </h3>
-                <button onclick="hideContactModal()" class="text-gray-400 hover:text-white transition">
+                <button 
+                    onclick="hideContactModal()" 
+                    class="text-gray-400 hover:text-white transition"
+                    aria-label="Close contact modal">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -636,31 +646,55 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // FIX 1: This call is essential to render Lucide data-attributes as SVG icons.
-        lucide.createIcons();
+        // ------------------------------------------------------------------
+        // INITIALIZATION AND FADE-IN ANIMATION
+        // FIX: The lucide.createIcons() call is now placed inside window.onload 
+        // to ensure the library and all DOM elements are loaded before execution, 
+        // fixing the 'Cannot read properties of undefined (reading 'icons')' error.
+        // ------------------------------------------------------------------
+        
+        window.onload = function() {
+            // FIX: Run Lucide icon creation after everything is loaded
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                 lucide.createIcons();
+            }
+
+            updateAllDurations();
+            
+            // Re-run the fade-in observation after content is loaded
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                 rootMargin: '0px 0px -100px 0px', 
+                 threshold: 0.1 
+            });
+
+            fadeInElements.forEach(element => { observer.observe(element); });
+        };
+
 
         // ------------------------------------------------------------------
-        // CONTACT MODAL LOGIC (FIXED)
+        // CONTACT MODAL LOGIC 
         // ------------------------------------------------------------------
         const contactModal = document.getElementById('contactModal');
         
         function showContactModal() {
             contactModal.classList.remove('hidden');
             contactModal.classList.add('flex');
-            // Slight delay for visibility to apply before transition
             setTimeout(() => {
                 contactModal.style.opacity = 1;
-                // Use a proper Tailwind class change instead of style property for clean transition
                 contactModal.querySelector('div').classList.remove('scale-95');
                 contactModal.querySelector('div').classList.add('scale-100');
             }, 10);
         }
 
-        // FIX 2: Corrected logic to properly close when clicking the backdrop, but not the modal content.
         function hideContactModal(event) {
-            // Check if the function was called by an event (click) AND if the target is NOT the modal backdrop itself.
-            // If event.target is the inner modal (the div with the white background), DO NOTHING.
-            // Only hide if the event is null (called by close button) OR if the click was on the outer backdrop (contactModal)
             if (!event || event.target === contactModal) {
                 contactModal.style.opacity = 0;
                 contactModal.querySelector('div').classList.remove('scale-100');
@@ -674,7 +708,7 @@
         }
         
         // ------------------------------------------------------------------
-        // EXPERIENCE DURATION CALCULATION (Simplified for clarity)
+        // EXPERIENCE DURATION CALCULATION
         // ------------------------------------------------------------------
 
         /**
@@ -748,31 +782,6 @@
                 }
             });
         }
-        
-        // ------------------------------------------------------------------
-        // INITIALIZATION AND FADE-IN ANIMATION
-        // ------------------------------------------------------------------
-        
-        window.onload = function() {
-            updateAllDurations();
-        };
-
-        // FIX 3: Ensure Intersection Observer runs on all elements on load
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { 
-             // Minor adjustment for threshold/margin to smooth out appearance
-             rootMargin: '0px 0px -100px 0px', 
-             threshold: 0.1 
-        });
-
-        fadeInElements.forEach(element => { observer.observe(element); });
         
         // Smooth Scrolling for Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
